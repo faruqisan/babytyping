@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Baby Typing - Let the baby play with your pc</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <div class="container mx-auto">
+        <div class="columns-1">
+            <div class="mt-50">
+                <h1 id="pressedButton" class="text-9xl font-bold text-center "></h1>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    const maxShownOnScreen = 65;
+    var typedKeys = [];
+    document.onkeyup = overrideKeyboardEvent;
+    function overrideKeyboardEvent(e) {
+        typedKey = e.key;
+        if (typedKeys.length == maxShownOnScreen) {
+            typedKeys = [];
+        }
+        typedKeys.push(typedKey);
+        const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+        document.getElementById("pressedButton").style.color = "#" + randomColor;
+        document.getElementById("pressedButton").innerHTML = typedKeys.join(" ");
+    }
+</script>
+
+</html>
